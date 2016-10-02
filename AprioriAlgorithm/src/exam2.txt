@@ -1,5 +1,0 @@
-Milk, Bread, Salad, Fruit, Soup, Noodle
-Beef, Bread, Salad, Fruit, Soup, Noodle 
-Milk, Rice, Fruit, Soup, Pork, Lamb 
-Milk, Chicken, Fish, Fruit, Noodle 
-Fish, Bread, Fruit, Shrimp, Soup
