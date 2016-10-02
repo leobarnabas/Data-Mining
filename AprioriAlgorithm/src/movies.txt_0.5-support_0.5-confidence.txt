@@ -1,0 +1,46 @@
+
+1 Itemset with support values,
+CHIPS 0.15
+JUJUBEES 0.6
+POPCORN 0.55
+SNOWCAPS 0.5
+SODA 0.4
+SOUR PATCH KIDS 0.45
+SWEDISH FISH 0.55
+TICKETS 0.4
+TWIZZLERS 0.35
+WATER 0.55
+
+1 Itemset meeting minimum support of 0.5
+JUJUBEES
+POPCORN
+SNOWCAPS
+SWEDISH FISH
+WATER
+
+2 Itemset with support values,
+JUJUBEES,POPCORN 0.35
+JUJUBEES,SNOWCAPS 0.3
+JUJUBEES,SWEDISH FISH 0.45
+JUJUBEES,WATER 0.3
+POPCORN,SNOWCAPS 0.35
+POPCORN,SWEDISH FISH 0.35
+POPCORN,WATER 0.25
+SNOWCAPS,SWEDISH FISH 0.3
+SNOWCAPS,WATER 0.2
+SWEDISH FISH,WATER 0.35
+
+2 Itemset meeting minimum support of 0.5
+None
+
+3 Itemset with support values,
+None
+
+3 Itemset meeting minimum support of 0.5
+None
+
+Frequent itemsets meeting minumum support of 0.5
+None
+
+Association rules meeting minumum confidence of 0.5
+None

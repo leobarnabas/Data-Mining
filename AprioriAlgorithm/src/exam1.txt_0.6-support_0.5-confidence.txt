@@ -1,0 +1,37 @@
+
+1 Itemset with support values,
+a 3.0
+b 3.0
+c 2.0
+d 3.0
+e 3.0
+f 4.0
+
+1 Itemset meeting minimum support of 3.0
+a
+b
+d
+e
+
+2 Itemset with support values,
+a,b 1.0
+a,d 2.0
+a,e 2.0
+b,d 2.0
+b,e 1.0
+d,e 1.0
+
+2 Itemset meeting minimum support of 3.0
+None
+
+3 Itemset with support values,
+None
+
+3 Itemset meeting minimum support of 3.0
+None
+
+Frequent itemsets meeting minimum support of 3.0
+None
+
+Association rules meeting minimum confidence of 0.5
+None
