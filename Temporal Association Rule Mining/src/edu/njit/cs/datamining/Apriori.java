@@ -9,11 +9,14 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 import java.util.TreeMap;
 import java.util.TreeSet;
+
+import javax.xml.stream.events.EndDocument;
 
 public class Apriori {
 
@@ -26,7 +29,25 @@ public class Apriori {
 	private double min_support;
 	private double min_confidence;
 	private PrintWriter writer;
+	private Date startDate;
+	private Date endDate;
 	
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+
 	public PrintWriter getWriter() {
 		return writer;
 	}
@@ -82,6 +103,10 @@ public class Apriori {
 				System.out.println("\nPlease enter minimum confidence");
 				Double minConfidence=scnnr.nextDouble();
 				apriori.setMin_confidence(minConfidence);
+				System.out.println("\nPlease enter start date");
+				apriori.setStartDate(new Date(scnnr.nextLine()));
+				System.out.println("\nPlease enter start date");
+				apriori.setEndDate(new Date(scnnr.nextLine()));
 				apriori.runAlgorithm(fileName);	
 			}
 			else
@@ -287,14 +312,24 @@ public class Apriori {
 			BufferedReader reader=new BufferedReader(new FileReader(file));
 			String line=reader.readLine();
 			while(line!=null){
-				trnsctns.add(line);
-				line=reader.readLine();
+				String[] splitItems=line.split(",");
+				if(isWithinDateRange(new Date(splitItems[0]), startDate, endDate)){
+					trnsctns.add(line);
+					line=reader.readLine();
+				}
 			}
 			setTransactions(trnsctns);
 		} catch (IOException e) {
 			System.out.println("Unable to read file");
 		}
 	}
+	
+	private boolean isWithinDateRange(Date actualDate, Date startDate, Date endDate){
+		if(actualDate.after(startDate) && actualDate.before(endDate) || actualDate.after(endDate) && actualDate.before(startDate))
+			return true;
+		return false;
+	}
+	
 	
 	/**
 	 * Logs the information in console as well as in a separate file
