@@ -49,3 +49,5 @@ Temporary Items
 #binaries
 */bin
 */bin/*
+*.txt
+Temporal Association Rule Mining/petstore.txt
