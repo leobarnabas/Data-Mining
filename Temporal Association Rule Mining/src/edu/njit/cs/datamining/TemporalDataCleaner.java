@@ -26,16 +26,8 @@ public class TemporalDataCleaner {
 	private Date startDate;
 	private Date endDate;
 
-	public Date getStartDate() {
-		return startDate;
-	}
-
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
-	}
-
-	public Date getEndDate() {
-		return endDate;
 	}
 
 	public void setEndDate(Date endDate) {
@@ -79,6 +71,7 @@ public class TemporalDataCleaner {
 			String fileName = scnnr.nextLine();
 			if (new File(fileName).exists()) {
 
+				// Making a default time range, we can edit this to modify temporal rules
 				String stDate = "06-10-2016";
 				String endDate = "10-10-2016";
 

@@ -16,20 +16,12 @@ public class TransactionGenerator {
 	 * File that generates transactions for different databases
 	 */
 	public static void main(String[] args) {
-		String fileName = "petstore.txt";
+		String fileName = "nodefailure.txt";
 		try {
 			PrintWriter writer = new PrintWriter(fileName, "UTF-8");
 			List<String> items = new ArrayList<String>();
-			items.add("Leash");
-			items.add("Cat litter");
-			items.add("Green bowl");
-			items.add("Green ball");
-			items.add("Red ball");
-			items.add("Scoop");
-			items.add("Dog treat");
-			items.add("Fish food");
-			items.add("Feather toy");
-			items.add("Eye drops");
+			for(int i=1;i<=20;i++)
+				items.add("Node"+i);
 
 			for (int i = 0; i < 40; i++) {
 				Random rndm = new Random();
@@ -53,7 +45,7 @@ public class TransactionGenerator {
 	/**
 	 * Generates a random date within the current year
 	 * 
-	 * @return
+	 * @return a date within 2016
 	 */
 	private static String generateDate() {
 		GregorianCalendar gc = new GregorianCalendar();
@@ -72,7 +64,7 @@ public class TransactionGenerator {
 	 * 
 	 * @param start
 	 * @param end
-	 * @return
+	 * @return a random between the range
 	 */
 	private static int randomBetween(int start, int end) {
 		return start + (int) Math.round(Math.random() * (end - start));
