@@ -72,8 +72,8 @@ public class TemporalDataCleaner {
 			if (new File(fileName).exists()) {
 
 				// Making a default time range, we can edit this to modify temporal rules
-				String stDate = "06-10-2016";
-				String endDate = "10-10-2016";
+				String stDate = "06-10-2016 00:00:05";
+				String endDate = "10-10-2016 10:05:04";
 
 				System.out.println("Start date : " + stDate + " , End date : "
 						+ endDate);
@@ -97,7 +97,7 @@ public class TemporalDataCleaner {
 	 * @return
 	 */
 	private Date parseDateFromString(String dt) {
-		SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
 		Date parsedDate = null;
 		try {
 			parsedDate = sdf.parse(dt);

@@ -3,6 +3,7 @@ package edu.njit.cs.datamining;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -55,8 +56,12 @@ public class TransactionGenerator {
 		gc.set(Calendar.DAY_OF_YEAR, day);
 		int month = randomBetween(1, gc.getActualMaximum(Calendar.MONTH));
 		gc.set(Calendar.MONTH, month);
-		return (gc.get(Calendar.MONTH) + 1) + "-"
+		String date=(gc.get(Calendar.MONTH) + 1) + "-"
 				+ gc.get(Calendar.DAY_OF_MONTH) + "-" + gc.get(Calendar.YEAR);
+		Random random = new Random();
+		int millisInDay = 24*60*60*1000;
+		Time time = new Time((long)random.nextInt(millisInDay));
+		return date+" "+time.toString();
 	}
 
 	/**
