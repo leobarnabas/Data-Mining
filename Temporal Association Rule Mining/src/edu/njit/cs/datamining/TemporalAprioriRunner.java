@@ -27,7 +27,8 @@ public class TemporalAprioriRunner {
 		try {
 			TransactionGenerator.start(new String[]{""});
 			TemporalDataCleaner.start(new String[] {"","nodefailure.txt"});
-			Apriori.start(new String[]{"","nodefailure_cleaned.txt","0.7","0.5"});
+			Apriori apriori =new Apriori();
+			apriori.start(new String[]{"","nodefailure_cleaned.txt","0.7","0.7"});
 			/*System.out.println("Working Directory = "
 					+ System.getProperty("user.dir"));
 			runCommand("javac src/edu/njit/cs/datamining/TransactionGenerator.java");

@@ -67,13 +67,14 @@ public class Apriori {
 	 * exit
 	 */
 	public static void main(String[] args) {
-		start(args);
+		Apriori apriori = new Apriori();
+		apriori.start(args);
 	}
 
 	/**
 	 * Function that starts the program
 	 */
-	public static void start(String[] args) {
+	public void start(String[] args) {
 		Apriori apriori = new Apriori();
 		System.out.println("\nAssociation Rule Mining application");
 		String fileName = args[1];
@@ -81,7 +82,7 @@ public class Apriori {
 		if (new File(fileName).exists()) {
 			Double minSupport = Double.valueOf(args[2]);
 			Double minConfidence = Double.valueOf(args[3]);
-
+			System.out.println(min_confidence);
 			apriori.setMin_support(minSupport);
 			apriori.setMin_confidence(minConfidence);
 
@@ -138,11 +139,10 @@ public class Apriori {
 				supportItmMap.put(key, support);
 				uniqueItems.add(key);
 			}
-			printItem(key + " " + support );
+			printItem(key + " " + support);
 		}
 
-		printItem("\n1 Itemset meeting minimum support of " + min_support
-				);
+		printItem("\n1 Itemset meeting minimum support of " + min_support);
 		if (uniqueItems.size() == 0)
 			printItem("None");
 		for (String itm : uniqueItems)
@@ -161,15 +161,14 @@ public class Apriori {
 					twoItemSupportList.put(itemset, support);
 					supportItmMap.put(itemset, support);
 				}
-				printItem(itemset + " " + support );
+				printItem(itemset + " " + support);
 			}
 		}
 
 		String[] twoItems = new String[twoItemSupportList.size()];
 		twoItemSupportList.keySet().toArray(twoItems);
 
-		printItem("\n2 Itemset meeting minimum support of " + min_support
-				);
+		printItem("\n2 Itemset meeting minimum support of " + min_support);
 		if (twoItems.length == 0)
 			printItem("None");
 
@@ -206,7 +205,7 @@ public class Apriori {
 							supportItmMap.put(newItem, support);
 							tempItemList.add(newItem);
 						}
-						printItem(newItem + " " + support );
+						printItem(newItem + " " + support);
 					}
 				}
 			}
@@ -215,7 +214,7 @@ public class Apriori {
 				printItem("None");
 
 			printItem("\n" + itmSetIdx + " Itemset meeting minimum support of "
-					+ min_support );
+					+ min_support);
 			if (tempItemList.size() < 1)
 				printItem("None");
 			for (String itm : tempItemList)
@@ -232,7 +231,7 @@ public class Apriori {
 		}
 
 		printItem("\nFrequent itemsets meeting minimum support of "
-				+ min_support );
+				+ min_support);
 		if (supportItems.size() == 0)
 			printItem("None");
 		for (String itm : supportItems)
@@ -259,20 +258,24 @@ public class Apriori {
 						else
 							right.add(itm.get(j));
 					}
+					if (right.toString().split(",").length == 1) {
+						String leftItm = left.toString().replace("[", "")
+								.replace("]", "");
 
-					String leftItm = left.toString().replace("[", "")
-							.replace("]", "");
+						double leftSupport;
+						if (supportItmMap.get(leftItm) != null)
+							leftSupport = supportItmMap.get(leftItm);
+						else
+							leftSupport = (double) getItemsetCount(
+									transactions, leftItm)
+									/ transactions.size();
 
-					double leftSupport;
-					if (supportItmMap.get(leftItm) != null)
-						leftSupport = supportItmMap.get(leftItm);
-					else
-						leftSupport = (double) getItemsetCount(transactions,
-								leftItm) / transactions.size();
+						double confdnce = support / leftSupport;
+						if (confdnce >= min_confidence)
+							ruleSet.add(left.toString() + "->"
+									+ right.toString());
 
-					double confdnce = support / leftSupport;
-					if (confdnce >= min_confidence)
-						ruleSet.add(left.toString() + "->" + right.toString());
+					}
 				}
 			}
 		}
