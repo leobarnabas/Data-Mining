@@ -17,6 +17,14 @@ public class TransactionGenerator {
 	 * File that generates transactions for different databases
 	 */
 	public static void main(String[] args) {
+		start(args);
+	}
+	
+	/**
+	 * Function that starts the program
+	 */
+	
+	public static void start(String args[]){
 		String fileName = "nodefailure.txt";
 		try {
 			PrintWriter writer = new PrintWriter(fileName, "UTF-8");
@@ -40,7 +48,6 @@ public class TransactionGenerator {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	/**

@@ -56,37 +56,35 @@ public class TemporalDataCleaner {
 	 * exit
 	 */
 	public static void main(String[] args) {
+		start(args);
+	}
+
+	/**
+	 * Function that starts the program
+	 */
+	public static void start(String[] args) {
 		TemporalDataCleaner apriori = new TemporalDataCleaner();
 
-		while (true) {
+		String fileName = args[1];
+		System.out.println("\nTemporal Mining dataset cleaning application");
+		if (new File(fileName).exists()) {
+
+			// Making a default time range, we can edit this to modify temporal
+			// rules
+			String stDate = "06-10-2016 00:00:05";
+			String endDate = "10-10-2016 10:05:04";
+
+			System.out.println("Start date : " + stDate + " , End date : "
+					+ endDate);
+
+			apriori.setStartDate(apriori.parseDateFromString(stDate));
+			apriori.setEndDate(apriori.parseDateFromString(endDate));
+
+			apriori.cleanTransactions(fileName);
+
+		} else
 			System.out
-					.println("\nTemporal Mining dataset cleaning application");
-			System.out.println("\nPress enter to continue or q to quit");
-			Scanner scnnr = new Scanner(System.in);
-			String optn = scnnr.nextLine();
-			if (optn.toUpperCase().equals("Q"))
-				break;
-			System.out
-					.println("\nPlease enter the name of file containing transactions ");
-			String fileName = scnnr.nextLine();
-			if (new File(fileName).exists()) {
-
-				// Making a default time range, we can edit this to modify temporal rules
-				String stDate = "06-10-2016 00:00:05";
-				String endDate = "10-10-2016 10:05:04";
-
-				System.out.println("Start date : " + stDate + " , End date : "
-						+ endDate);
-
-				apriori.setStartDate(apriori.parseDateFromString(stDate));
-				apriori.setEndDate(apriori.parseDateFromString(endDate));
-
-				apriori.cleanTransactions(fileName);
-
-			} else
-				System.out
-						.println("\nUnable to find the specified file. Please enter a valid file\n");
-		}
+					.println("\nUnable to find the specified file. Please enter a valid file\n");
 	}
 
 	/**
