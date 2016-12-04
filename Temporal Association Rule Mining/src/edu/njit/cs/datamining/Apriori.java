@@ -67,14 +67,13 @@ public class Apriori {
 	 * exit
 	 */
 	public static void main(String[] args) {
-		Apriori apriori = new Apriori();
-		apriori.start(args);
+		start(args);
 	}
 
 	/**
 	 * Function that starts the program
 	 */
-	public void start(String[] args) {
+	public static void start(String[] args) {
 		Apriori apriori = new Apriori();
 		System.out.println("\nAssociation Rule Mining application");
 		String fileName = args[1];
@@ -82,7 +81,6 @@ public class Apriori {
 		if (new File(fileName).exists()) {
 			Double minSupport = Double.valueOf(args[2]);
 			Double minConfidence = Double.valueOf(args[3]);
-			System.out.println(min_confidence);
 			apriori.setMin_support(minSupport);
 			apriori.setMin_confidence(minConfidence);
 

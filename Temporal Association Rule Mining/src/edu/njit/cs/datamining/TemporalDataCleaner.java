@@ -68,17 +68,14 @@ public class TemporalDataCleaner {
 		String fileName = args[1];
 		System.out.println("\nTemporal Mining dataset cleaning application");
 		if (new File(fileName).exists()) {
+			String stTime = args[2];
+			String endTime = args[3];
 
-			// Making a default time range, we can edit this to modify temporal
-			// rules
-			String stDate = "06-10-2016 00:00:05";
-			String endDate = "10-10-2016 10:05:04";
+			System.out.println("Start date : " + stTime + " , End date : "
+					+ endTime);
 
-			System.out.println("Start date : " + stDate + " , End date : "
-					+ endDate);
-
-			apriori.setStartDate(apriori.parseDateFromString(stDate));
-			apriori.setEndDate(apriori.parseDateFromString(endDate));
+			apriori.setStartDate(apriori.parseDateFromString(stTime));
+			apriori.setEndDate(apriori.parseDateFromString(endTime));
 
 			apriori.cleanTransactions(fileName);
 
